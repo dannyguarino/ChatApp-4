@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "314014486742",
+    "project_id": "trackapp-460fd",
+    "storage_bucket": "trackapp-460fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314014486742:android:8d35be8eaaf8f8d4c4f977",
+        "android_client_info": {
+          "package_name": "com.mouad.trackapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "314014486742-p9630f6t3fe3vgpe3bf6qlflb1ak3ko0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDA2YCPq-7wky6UJ6EoQVHq33jhxtFmbcM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "314014486742-p9630f6t3fe3vgpe3bf6qlflb1ak3ko0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
