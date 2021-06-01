@@ -54,14 +54,9 @@ public class MessageActivity extends AppCompatActivity {
         Toolbar toolbar;
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
-        //getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        getSupportActionBar().setTitle("Message");
+        getSupportActionBar().show();
+
 
         recyclerView=findViewById(R.id.recycle_view);
         recyclerView.setHasFixedSize(true);
