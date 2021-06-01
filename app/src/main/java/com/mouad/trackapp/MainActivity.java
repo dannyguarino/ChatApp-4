@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         profile_image= findViewById(R.id.profile_image);
         usermane=findViewById(R.id.username);
         firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        //reference= FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+
         reference= FirebaseDatabase.getInstance().getReference().child("Users").child(firebaseUser.getUid());
         reference.addValueEventListener(new ValueEventListener() {
             @Override
