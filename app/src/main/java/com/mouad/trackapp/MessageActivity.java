@@ -32,22 +32,18 @@ public class MessageActivity extends AppCompatActivity {
 
     CircleImageView profile_image;
     TextView username;
-
     FirebaseUser fuser;
     DatabaseReference reference;
-
     Intent intent;
-
     ImageButton btn_send;
     EditText text_send;
-
     List<Chat> mChat;
     MessageAdapter messageAdapter;
-
     RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
         Toolbar toolbar;
@@ -73,6 +69,7 @@ public class MessageActivity extends AppCompatActivity {
         fuser= FirebaseAuth.getInstance().getCurrentUser();
 
         btn_send.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 String msg=text_send.getText().toString();
@@ -91,6 +88,7 @@ public class MessageActivity extends AppCompatActivity {
 
         reference= FirebaseDatabase.getInstance().getReference().child("Users").child(userid);
         reference.addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user=dataSnapshot.getValue(User.class);
@@ -119,12 +117,13 @@ public class MessageActivity extends AppCompatActivity {
     }
 
     private void sendMessage(String sender,String receiver,String message){
+
         DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Chats");
         HashMap<String,Object> hashMap=new HashMap<>();
+
         hashMap.put("sender",sender);
         hashMap.put("receiver",receiver);
         hashMap.put("message",message);
-
         reference.child("Chats").push().setValue(hashMap);
 
     }
@@ -133,6 +132,7 @@ public class MessageActivity extends AppCompatActivity {
         mChat=new ArrayList<>();
         reference=FirebaseDatabase.getInstance().getReference().child("Chats");
         reference.addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mChat.clear();
