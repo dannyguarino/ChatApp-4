@@ -24,7 +24,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.mouad.trackapp.Fragments.ChatsFragment;
+import com.mouad.trackapp.Fragments.FriendsFragment;
 import com.mouad.trackapp.Fragments.ProfileFragment;
 import com.mouad.trackapp.Fragments.UsersFragment;
 import com.mouad.trackapp.Model.User;
@@ -78,9 +78,11 @@ public class MainActivity extends AppCompatActivity {
         ViewPager viewPager=findViewById(R.id.view_pager);
         ViewPagerAdapter viewPagerAdapter=new ViewPagerAdapter(getSupportFragmentManager());
 
-        viewPagerAdapter.addFragment(new UsersFragment(),"Users");
+
+        viewPagerAdapter.addFragment(new FriendsFragment(),"Friends");
         viewPagerAdapter.addFragment(new ProfileFragment(),"Profile");
-        viewPagerAdapter.addFragment(new ChatsFragment(),"chats");
+        viewPagerAdapter.addFragment(new UsersFragment(),"Users");
+
 
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
