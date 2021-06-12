@@ -53,7 +53,7 @@ public class MessageActivity extends AppCompatActivity {
         getSupportActionBar().show();
 
 
-        recyclerView=findViewById(R.id.recycle_view);
+        recyclerView=findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getApplicationContext());
         linearLayoutManager.setStackFromEnd(true);
@@ -65,7 +65,6 @@ public class MessageActivity extends AppCompatActivity {
         text_send=findViewById(R.id.text_send);
         intent=getIntent();
         String userid=intent.getStringExtra("id");
-        Toast.makeText(MessageActivity.this,userid,Toast.LENGTH_SHORT).show();
         fuser= FirebaseAuth.getInstance().getCurrentUser();
 
         btn_send.setOnClickListener(new View.OnClickListener() {
@@ -130,14 +129,15 @@ public class MessageActivity extends AppCompatActivity {
 
     private void readMessages(String myid,String userid,String imageurl){
         mChat=new ArrayList<>();
-        reference=FirebaseDatabase.getInstance().getReference().child("Chats");
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Chats").child("Chats");
         reference.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mChat.clear();
+                Chat chat=new Chat();
                 for (DataSnapshot snapshot:dataSnapshot.getChildren()){
-                    Chat chat=snapshot.getValue(Chat.class);
+                    chat=snapshot.getValue(Chat.class);
                     if (chat.getReceiver().equals(myid) && chat.getSender().equals(userid) ||
                             chat.getReceiver().equals(userid) && chat.getSender().equals(myid)){
                         mChat.add(chat);
