@@ -59,6 +59,18 @@
             android:textColor="@color/white"
             app:backgroundTint="#009688" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Forgot your password"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="end"
+            android:textStyle="bold"
+            android:id="@+id/forgot_password"
+            android:textColor="#009688"
+            />
+
 
     </LinearLayout>
 
