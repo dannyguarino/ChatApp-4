@@ -30,6 +30,7 @@ import com.mouad.trackapp.Fragments.UsersFragment;
 import com.mouad.trackapp.Model.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -97,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         switch(item.getItemId()){
             case R.id.logout:
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(MainActivity.this,StartActivity.class));
+                startActivity(new Intent(MainActivity.this,StartActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 finish();
                 return true;
         }
@@ -137,4 +138,23 @@ public class MainActivity extends AppCompatActivity {
             return titles.get(position);
         }
     }
+    private void status(String status){
+        reference=FirebaseDatabase.getInstance().getReference().child("Users").child(firebaseUser.getUid());
+        HashMap<String,Object> hasMap=new HashMap<>();
+        hasMap.put("status",status);
+        reference.updateChildren(hasMap);
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        status("online");
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        status("offline");
+    }
+
 }

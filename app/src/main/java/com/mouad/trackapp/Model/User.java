@@ -5,16 +5,27 @@ public class User {
     private String username;
     private String imageURL;
     private String email;
+    private String status;
 
 
-    public User(String id, String username, String imageURL,String email) {
+
+    public User(String id, String username, String imageURL,String email,String status) {
         this.id = id;
         this.username = username;
         this.imageURL = imageURL;
         this.email = email;
+        this.status = status;
     }
 
     public User() {
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getId() {
