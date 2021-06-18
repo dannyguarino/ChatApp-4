@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_200"
+    android:background="#FF616D"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".StartActivity">
@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Trak app"
+        android:text="ChatApp"
         android:textSize="25sp"
         android:textStyle="bold" />
 
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="login"
-        app:backgroundTint="#009688" />
+        app:backgroundTint="#D83A56" />
 
     <Button
 
@@ -31,6 +31,6 @@
         android:layout_height="wrap_content"
         android:text="Register"
 
-        app:backgroundTint="#009688" />
+        app:backgroundTint="#D83A56" />
 
 </LinearLayout>

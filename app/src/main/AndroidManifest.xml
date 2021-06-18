@@ -13,9 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TrackApp">
-        <activity android:name=".ResetPasswordActivity"
-            android:parentActivityName=".LoginActivity"
-            ></activity>
+        <activity android:name=".MessagingActivity"></activity>
+        <activity android:name=".LoginTutoActivity" />
+        <activity android:name=".RegisterTutoActivity" />
+        <activity android:name=".StartActivity" />
+        <activity
+            android:name=".ResetPasswordActivity"
+            android:parentActivityName=".LoginActivity" />
         <activity
             android:name=".LoginActivity"
             android:parentActivityName=".StartActivity" />
@@ -24,7 +28,7 @@
             android:name=".RegisterActivity"
             android:parentActivityName=".StartActivity" />
         <activity android:name=".MessageActivity" />
-        <activity android:name=".StartActivity">
+        <activity android:name=".FirstActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
