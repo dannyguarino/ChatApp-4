@@ -8,9 +8,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/chat"
+        android:label="ChatApp"
+        android:roundIcon="@drawable/chat"
         android:supportsRtl="true"
         android:theme="@style/Theme.TrackApp">
         <activity android:name=".MessagingActivity"></activity>
