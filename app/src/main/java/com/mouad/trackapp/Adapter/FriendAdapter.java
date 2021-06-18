@@ -14,6 +14,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mouad.trackapp.MessageActivity;
 import com.mouad.trackapp.Model.Friend;
 import com.mouad.trackapp.Model.User;
@@ -54,17 +61,39 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
 
         }
 
-
-
+        
 
         if (ischat){
-            if (user.getStatus().equals("online")){
-                holder.img_on.setVisibility(View.VISIBLE);
-                holder.img_off.setVisibility(View.GONE);
-            }else{
-                holder.img_off.setVisibility(View.VISIBLE);
-                holder.img_on.setVisibility(View.GONE);
-            }
+            FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+
+            DatabaseReference reference= FirebaseDatabase.getInstance().getReference().child("Users").child(user.getId()).child("status");
+
+            final  String[] s = {""};
+
+
+            reference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    s[0] =dataSnapshot.getValue(String.class);
+                    System.out.println(s[0]);
+                    if (s[0].equalsIgnoreCase("online")){
+                        holder.img_on.setVisibility(View.VISIBLE);
+                        holder.img_off.setVisibility(View.GONE);
+                    }else{
+                        holder.img_off.setVisibility(View.VISIBLE);
+                        holder.img_on.setVisibility(View.GONE);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+
+
+
         }
         else{
             holder.img_off.setVisibility(View.GONE);
