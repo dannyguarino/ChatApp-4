@@ -20,10 +20,7 @@ public class FirstActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
 
-        /*Toolbar toolbar=findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Guide");
-        getSupportActionBar().show();*/
+
 
         firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
         if(firebaseUser!=null){

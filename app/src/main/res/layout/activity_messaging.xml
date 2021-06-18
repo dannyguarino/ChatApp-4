@@ -18,7 +18,7 @@
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:text="In your chat app you can have fun with your friend and all other users if you want"
+            android:text="@string/messaging_fun"
             android:textColor="@color/black"
 
             android:textSize="20dp" />
@@ -52,7 +52,7 @@
         android:layout_marginBottom="129dp"
 
         android:gravity="center"
-        android:text="ChatApp is yours, give you the oportunity to communicate all over the world"
+        android:text="@string/messaging"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold" />
@@ -80,6 +80,6 @@
         android:layout_weight="1"
 
         android:textColor="@color/black"
-        android:text="Skip" />
+        android:text="@string/skip" />
 
 </RelativeLayout>

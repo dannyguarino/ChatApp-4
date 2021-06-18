@@ -19,7 +19,7 @@
             android:layout_height="200dp"
             android:gravity="center"
             android:id="@+id/text"
-            android:text="Wellcome your chat app where the world became a small village"
+            android:text="@string/wellcome"
             android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold" />
@@ -53,7 +53,7 @@
         android:layout_marginBottom="129dp"
 
         android:gravity="center"
-        android:text="Life became eassier with your app chatApp"
+        android:text="@string/your_app"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold" />
@@ -80,6 +80,6 @@
         android:layout_marginBottom="9dp"
         android:layout_weight="1"
         android:textColor="@color/black"
-        android:text="Skip" />
+        android:text="@string/skip" />
 
 </RelativeLayout>
