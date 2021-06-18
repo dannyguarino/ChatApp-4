@@ -22,12 +22,7 @@ public class FirstActivity extends AppCompatActivity {
 
 
 
-        firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        if(firebaseUser!=null){
-            Intent intent=new Intent(FirstActivity.this,MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
+
         CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
 
             public void onTick(long millisUntilFinished) {
@@ -40,12 +35,21 @@ public class FirstActivity extends AppCompatActivity {
             }
         }.start();
 
+        firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+        if(firebaseUser!=null){
+            Intent intent=new Intent(FirstActivity.this,MainActivity.class);
+            startActivity(intent);
+            countDownTimer.cancel();
+            finish();
+        }
+
         imageButton=findViewById(R.id.arrow);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(FirstActivity.this,RegisterTutoActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 countDownTimer.cancel();
+                startActivity(new Intent(FirstActivity.this,RegisterTutoActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+
                 finish();
             }
         });

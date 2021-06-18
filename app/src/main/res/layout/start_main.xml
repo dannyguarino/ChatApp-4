@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF616D"
+    android:background="@color/colorPrimary"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".StartActivity">
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="login"
-        app:backgroundTint="#D83A56" />
+        app:backgroundTint="@color/colorPrimaryVariant" />
 
     <Button
 
@@ -31,6 +31,6 @@
         android:layout_height="wrap_content"
         android:text="Register"
 
-        app:backgroundTint="#D83A56" />
+        app:backgroundTint="@color/colorPrimaryVariant" />
 
 </LinearLayout>

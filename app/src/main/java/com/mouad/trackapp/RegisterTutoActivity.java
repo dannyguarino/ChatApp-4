@@ -21,11 +21,7 @@ public class RegisterTutoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_tuto);
         firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        if(firebaseUser!=null){
-            Intent intent=new Intent(RegisterTutoActivity.this,MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
+
 
 
         register=findViewById(R.id.register);
@@ -49,6 +45,13 @@ public class RegisterTutoActivity extends AppCompatActivity {
                 finish();
             }
         }.start();
+
+        if(firebaseUser!=null){
+            Intent intent=new Intent(RegisterTutoActivity.this,MainActivity.class);
+            countDownTimer.cancel();
+            startActivity(intent);
+            finish();
+        }
 
         imageButton=findViewById(R.id.arrow);
         imageButton.setOnClickListener(new View.OnClickListener() {
