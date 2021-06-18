@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello_blank_fragment">fragement vide</string>
+    <string name="wellcome">Bonjour voutre application chatApp rend le monde une petite village</string>
+    <string name="your_app">la vie devient simple avec chatApp</string>
+    <string name="skip">Ingore</string>
+    <string name="register_tuto">Si vous n\'avez pas de compte cliquer sur le botton au dessus pour s\'enregistrer</string>
+    <string name="register_button">S\'enregistrer</string>
+    <string name="messaging">Chatapp est votre application vous libre de l\'utilise</string>
+    <string name="messaging_fun">"Vous etes capable de communiquer avec tout le monde "</string>
+    <string name="login_tuto">Si vous n\'avez pas de compte clique sur le botton au dessus</string>
+    <string name="log_in">entrer</string>
+    <string name="forgot_your_password">Mots de passe oubliee</string>
+    <string name="create_account">Creer compte</string>
+    <string name="register">S\'enregistre</string>
+    <string name="reset">recuperer</string>
+    <string name="reset_your_password">En cliquant vous recevie un lien de reinisialisation de mot de passe</string>
+    <string name="login">Entrer</string>
+</resources>

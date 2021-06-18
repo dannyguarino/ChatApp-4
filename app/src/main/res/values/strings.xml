@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TrackApp</string>
+    <string name="app_name" translatable="false">ChatApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="wellcome">Wellcome your chat app where the world became a small village</string>
@@ -10,4 +10,14 @@
     <string name="messaging">ChatApp is yours, give you the oportunity to communicate all over the world</string>
     <string name="messaging_fun">In your chat app you can have fun with your friend and all other users if you want</string>
     <string name="login_tuto">If you have account click the button bellow now</string>
+
+    <string name="log_in">log in</string>
+
+    <string name="forgot_your_password">Forgot your password</string>
+
+    <string name="create_account">Create Account</string>
+    <string name="register">register</string>
+    <string name="reset">Reset</string>
+    <string name="reset_your_password">By clicking RESET, you will receive an email to reset your password</string>
+    <string name="login">login</string>
 </resources>

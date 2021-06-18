@@ -16,7 +16,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FF616D">
+            android:background="@color/colorPrimary">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_image"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF616D"
+    android:background="@color/colorPrimary"
     tools:context=".LoginTutoActivity">
     <LinearLayout
         android:layout_width="wrap_content"
@@ -52,16 +52,16 @@
         android:layout_marginStart="124dp"
         android:layout_marginEnd="83dp"
         android:layout_marginBottom="96dp"
-        android:background="#D83A56"
+        android:background="@color/colorPrimaryVariant"
         android:gravity="center"
-        android:text="Log In"
+        android:text="@string/log_in"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
-        app:backgroundTint="#D83A56" />
+        app:backgroundTint="@color/colorPrimaryVariant" />
 
     <ImageButton
-        android:background="#FF616D"
+        android:background="@color/colorPrimary"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignParentEnd="true"

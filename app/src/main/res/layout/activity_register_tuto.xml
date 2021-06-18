@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF616D"
+    android:background="@color/colorPrimary"
     tools:context=".RegisterTutoActivity">
     <LinearLayout
 
@@ -46,24 +46,23 @@
     <Button
         android:id="@+id/register"
         style="@style/Widget.Support.CoordinatorLayout"
-        android:layout_width="186dp"
-        android:layout_height="64dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="128dp"
-        android:layout_marginEnd="97dp"
+
         android:layout_marginBottom="104dp"
-        android:background="#D83A56"
+        android:background="@color/colorPrimaryVariant"
         android:gravity="center"
         android:text="@string/register_button"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
-        app:backgroundTint="#D83A56" />
+        app:backgroundTint="@color/colorPrimaryVariant" />
 
     <ImageButton
-        android:background="#FF616D"
+        android:background="@color/colorPrimary"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignParentEnd="true"

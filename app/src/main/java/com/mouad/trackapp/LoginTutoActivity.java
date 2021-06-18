@@ -22,11 +22,7 @@ public class LoginTutoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login_tuto);
 
         firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        if(firebaseUser!=null){
-            Intent intent=new Intent(LoginTutoActivity.this,MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
+
 
 
         login=findViewById(R.id.login);

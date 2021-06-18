@@ -21,7 +21,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create Account"
+            android:text="@string/create_account"
             />
 
         <com.rengwuxian.materialedittext.MaterialEditText
@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:backgroundTint="#D83A56"
-            android:text="register"
+            android:text="@string/register"
             android:textColor="@color/white" />
 
 

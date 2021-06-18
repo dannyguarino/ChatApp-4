@@ -26,12 +26,7 @@ public class RegisterTutoActivity extends AppCompatActivity {
 
         register=findViewById(R.id.register);
 
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(RegisterTutoActivity.this,RegisterActivity.class));
-            }
-        });
+
 
 
         CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
@@ -46,6 +41,14 @@ public class RegisterTutoActivity extends AppCompatActivity {
             }
         }.start();
 
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RegisterTutoActivity.this,RegisterActivity.class));
+                countDownTimer.cancel();
+            }
+        });
+
         if(firebaseUser!=null){
             Intent intent=new Intent(RegisterTutoActivity.this,MainActivity.class);
             countDownTimer.cancel();
@@ -58,8 +61,9 @@ public class RegisterTutoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(RegisterTutoActivity.this,LoginTutoActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                finish();
                 countDownTimer.cancel();
+                finish();
+
             }
         });
     }

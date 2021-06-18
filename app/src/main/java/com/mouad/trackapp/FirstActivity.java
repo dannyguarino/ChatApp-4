@@ -37,9 +37,10 @@ public class FirstActivity extends AppCompatActivity {
 
         firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
         if(firebaseUser!=null){
+            countDownTimer.cancel();
             Intent intent=new Intent(FirstActivity.this,MainActivity.class);
             startActivity(intent);
-            countDownTimer.cancel();
+
             finish();
         }
 

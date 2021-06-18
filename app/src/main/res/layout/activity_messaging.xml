@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    android:background="#FF616D"
+    android:background="@color/colorPrimary"
     tools:context=".MessagingActivity">
 
     <LinearLayout
@@ -58,7 +58,7 @@
         android:textStyle="bold" />
 
     <ImageButton
-        android:background="#FF616D"
+        android:background="@color/colorPrimary"
         android:id="@+id/arrow"
         android:layout_width="80dp"
         android:layout_height="80dp"
