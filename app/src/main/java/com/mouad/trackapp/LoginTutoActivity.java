@@ -27,13 +27,7 @@ public class LoginTutoActivity extends AppCompatActivity {
 
         login=findViewById(R.id.login);
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(LoginTutoActivity.this,LoginActivity.class));
 
-            }
-        });
 
 
         CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
@@ -54,6 +48,15 @@ public class LoginTutoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 countDownTimer.cancel();
                 startActivity(new Intent(LoginTutoActivity.this,MessagingActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                finish();
+            }
+        });
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                countDownTimer.cancel();
+                startActivity(new Intent(LoginTutoActivity.this,LoginActivity.class));
                 finish();
             }
         });

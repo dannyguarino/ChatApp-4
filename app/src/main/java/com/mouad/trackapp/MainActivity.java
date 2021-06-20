@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         viewPagerAdapter.addFragment(new FriendsFragment(),getString(R.string.Friends));
-        viewPagerAdapter.addFragment(new ProfileFragment(),getString(R.string.Friends));
+        viewPagerAdapter.addFragment(new ProfileFragment(),getString(R.string.Profile));
         viewPagerAdapter.addFragment(new UsersFragment(),getString(R.string.users));
 
 

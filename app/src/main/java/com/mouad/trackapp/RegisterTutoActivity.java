@@ -44,8 +44,9 @@ public class RegisterTutoActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(RegisterTutoActivity.this,RegisterActivity.class));
                 countDownTimer.cancel();
+                startActivity(new Intent(RegisterTutoActivity.this,RegisterActivity.class));
+                finish();
             }
         });
 
