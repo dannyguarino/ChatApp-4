@@ -49,7 +49,7 @@ public class MessageActivity extends AppCompatActivity {
         Toolbar toolbar;
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Message");
+        getSupportActionBar().setTitle(R.string.Messages);
         getSupportActionBar().show();
 
 
@@ -75,7 +75,7 @@ public class MessageActivity extends AppCompatActivity {
                 if(!msg.equals("")){
                     sendMessage(fuser.getUid(),userid,msg);
                 }else{
-                    Toast.makeText(MessageActivity.this,"you can not send empty message",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MessageActivity.this,R.string.empty_message,Toast.LENGTH_SHORT).show();
                 }
                 text_send.setText("");
             }

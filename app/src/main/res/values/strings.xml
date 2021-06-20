@@ -15,9 +15,22 @@
 
     <string name="forgot_your_password">Forgot your password</string>
 
-    <string name="create_account">Create Account</string>
+    <string name="create_account">Login Account</string>
     <string name="register">register</string>
     <string name="reset">Reset</string>
     <string name="reset_your_password">By clicking RESET, you will receive an email to reset your password</string>
     <string name="login">login</string>
+    <string name="Login_java">Login</string>
+    <string name="All_fields_are_required">All fields are required</string>
+    <string name="Authentification_failed">Authentification failed</string>
+    <string name="Reset_your_password">Reset your password</string>
+    <string name="Email_required">Email required</string>
+    <string name="Pls_check_your_email">Pls check your email</string>
+    <string name="password_checker">password must be at least 6 characters</string>
+    <string name="email_password_incorecte">you cannot register with this email or password</string>
+    <string name="Messages">Messages</string>
+    <string name="empty_message">you can not send empty message</string>
+    <string name="Profile">Profile</string>
+    <string name="Friends">Friends</string>
+    <string name="users">Users</string>
 </resources>

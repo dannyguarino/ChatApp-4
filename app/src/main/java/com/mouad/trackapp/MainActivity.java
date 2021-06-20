@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Profile");
+        getSupportActionBar().setTitle(R.string.Profile);
         getSupportActionBar().show();
 
 
@@ -79,9 +79,9 @@ public class MainActivity extends AppCompatActivity {
         ViewPagerAdapter viewPagerAdapter=new ViewPagerAdapter(getSupportFragmentManager());
 
 
-        viewPagerAdapter.addFragment(new FriendsFragment(),"Friends");
-        viewPagerAdapter.addFragment(new ProfileFragment(),"Profile");
-        viewPagerAdapter.addFragment(new UsersFragment(),"Users");
+        viewPagerAdapter.addFragment(new FriendsFragment(),getString(R.string.Friends));
+        viewPagerAdapter.addFragment(new ProfileFragment(),getString(R.string.Friends));
+        viewPagerAdapter.addFragment(new UsersFragment(),getString(R.string.users));
 
 
         viewPager.setAdapter(viewPagerAdapter);

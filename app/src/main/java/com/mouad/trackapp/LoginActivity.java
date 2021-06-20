@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         Toolbar toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Login");
+        getSupportActionBar().setTitle(R.string.Login_java);
         getSupportActionBar().show();
         auth=FirebaseAuth.getInstance();
         email=findViewById(R.id.email);
@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
             String txt_email=email.getText().toString();
             String txt_password=password.getText().toString();
             if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)){
-                Toast.makeText(LoginActivity.this,"All fields are required",Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this,R.string.All_fields_are_required,Toast.LENGTH_SHORT).show();
 
             }
             else {
@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                                 startActivity(intent);
                                 finish();
                             }else{
-                                Toast.makeText(LoginActivity.this,"Authentification failed",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this,R.string.Authentification_failed,Toast.LENGTH_SHORT).show();
                             }
                         });
             }

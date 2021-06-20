@@ -29,7 +29,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
         Toolbar toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Reset your password");
+        getSupportActionBar().setTitle(R.string.Reset_your_password);
         getSupportActionBar().show();
 
         send_email=findViewById(R.id.send_email);
@@ -40,12 +40,12 @@ public class ResetPasswordActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email=send_email.getText().toString();
                 if (email.equals("")){
-                    Toast.makeText(ResetPasswordActivity.this,"Email required",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ResetPasswordActivity.this,R.string.Email_required,Toast.LENGTH_SHORT).show();
 
                 }else{
                     firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener(task -> {
                         if(task.isSuccessful()){
-                            Toast.makeText(ResetPasswordActivity.this,"Pls check your email",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ResetPasswordActivity.this,R.string.Pls_check_your_email,Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(ResetPasswordActivity.this,LoginActivity.class));
 
                         }else{
