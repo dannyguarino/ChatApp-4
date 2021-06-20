@@ -8,6 +8,8 @@
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.cardview.widget.CardView
+
+        android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <RelativeLayout
@@ -43,7 +45,17 @@
                 android:id="@+id/username"
                 />
 </RelativeLayout>
+
     </androidx.cardview.widget.CardView>
 
+    <Button
+        android:id="@+id/btn_change_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/card"
+        android:layout_marginTop="93dp"
+        android:backgroundTint="@color/colorPrimaryVariant"
+        android:text="@string/change_password"
+        android:textColor="@color/white" />
 
 </RelativeLayout>

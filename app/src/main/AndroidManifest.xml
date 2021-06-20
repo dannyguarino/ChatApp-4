@@ -13,7 +13,8 @@
         android:roundIcon="@drawable/chat"
         android:supportsRtl="true"
         android:theme="@style/Theme.TrackApp">
-        <activity android:name=".MessagingActivity"></activity>
+        <activity android:name=".ChangePasswordActivity"></activity>
+        <activity android:name=".MessagingActivity" />
         <activity android:name=".LoginTutoActivity" />
         <activity android:name=".RegisterTutoActivity" />
         <activity android:name=".StartActivity" />

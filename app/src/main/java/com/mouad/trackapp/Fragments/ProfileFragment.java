@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
+import com.mouad.trackapp.ChangePasswordActivity;
+import com.mouad.trackapp.FirstActivity;
+import com.mouad.trackapp.MainActivity;
 import com.mouad.trackapp.Model.User;
 import com.mouad.trackapp.R;
 
@@ -48,6 +52,7 @@ public class ProfileFragment extends Fragment {
     TextView username;
     DatabaseReference reference;
     FirebaseUser fuser;
+    Button button;
 
     StorageReference storageReference;
     private static int IMAGE_REQUEST=1;
@@ -90,6 +95,16 @@ public class ProfileFragment extends Fragment {
                 openImage();
             }
         });
+
+        button=view.findViewById(R.id.btn_change_password);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getContext(), ChangePasswordActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
     private void openImage(){
