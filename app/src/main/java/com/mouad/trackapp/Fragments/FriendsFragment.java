@@ -9,10 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -51,9 +53,11 @@ public class FriendsFragment extends Fragment {
         readUsers();
         search_users=view.findViewById(R.id.search_users);
         search_users.addTextChangedListener(new TextWatcher() {
+
+
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                searchUsers(charSequence.toString());
             }
 
             @Override
@@ -72,13 +76,14 @@ public class FriendsFragment extends Fragment {
 
     private void searchUsers(String toString) {
         FirebaseUser fuser=FirebaseAuth.getInstance().getCurrentUser();
-        Query query=FirebaseDatabase.getInstance().getReference().child("Friends").orderByChild("username")
+        FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+        Query query=FirebaseDatabase.getInstance().getReference().child("Friends").child(firebaseUser.getUid()).orderByChild("username")
                 .startAt(toString).endAt(toString+"\uf8ff");
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                //mUsers.clear();
+                mUsers.clear();
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     Friend user = snapshot1.getValue(Friend.class);
                     if (!user.getId().equals(fuser.getUid())) {
@@ -106,7 +111,7 @@ public class FriendsFragment extends Fragment {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //mUsers.clear();
+                mUsers.clear();
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()){
                     Friend user=snapshot.getValue(Friend.class);
                     assert user!=null;

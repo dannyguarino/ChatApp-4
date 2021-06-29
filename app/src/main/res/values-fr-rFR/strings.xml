@@ -30,4 +30,7 @@
     <string name="Friends">Amis</string>
     <string name="users">Utilisateurs</string>
     <string name="change_password">change password</string>
+    <string name="play_tic_tac_toe">Play X-O</string>
+    <string name="no_connexion">You are not connected to any souces of internet, activate you connexion or have fun by playing a game</string>
+
 </resources>

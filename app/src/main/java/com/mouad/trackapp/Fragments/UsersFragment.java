@@ -104,7 +104,7 @@ public class UsersFragment extends Fragment {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //mUsers.clear();
+                mUsers.clear();
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()){
                     User user=snapshot.getValue(User.class);
                     assert user!=null;
