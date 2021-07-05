@@ -13,9 +13,12 @@
         android:icon="@drawable/chat"
         android:label="ChatApp"
         android:roundIcon="@drawable/chat"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.TrackApp">
-        <activity android:name=".TicTacToeActivity"></activity>
+        <activity android:name=".FirstActivity"></activity>
+        <activity android:name=".MathGameActivity" />
+        <activity android:name=".TicTacToeActivity" />
         <activity android:name=".GameMenuActivity" />
         <activity android:name=".ChangePasswordActivity" />
         <activity android:name=".MessagingActivity" />
@@ -33,7 +36,7 @@
             android:name=".RegisterActivity"
             android:parentActivityName=".StartActivity" />
         <activity android:name=".MessageActivity" />
-        <activity android:name=".FirstActivity">
+        <activity android:name=".SpashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

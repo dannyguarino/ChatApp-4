@@ -9,12 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,10 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.mouad.trackapp.Adapter.FriendAdapter;
-import com.mouad.trackapp.Adapter.UserAdapter;
+import com.mouad.trackapp.Adapter.FriendItemAdapter;
 import com.mouad.trackapp.Model.Friend;
-import com.mouad.trackapp.Model.User;
 import com.mouad.trackapp.R;
 
 import java.util.ArrayList;
@@ -35,10 +31,10 @@ import java.util.List;
 
 
 public class FriendsFragment extends Fragment {
-    private RecyclerView recyclerView;
-    private FriendAdapter friendAdapter;
-    private List<Friend> mUsers;
-    EditText search_users;
+    private RecyclerView myrecyclerView;
+    private FriendItemAdapter myfriendAdapter;
+    private List<Friend> listUsers;
+    EditText looking_for_users;
 
 
     @Override
@@ -46,23 +42,23 @@ public class FriendsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_users, container, false);
-        recyclerView=view.findViewById(R.id.recycle_view);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mUsers=new ArrayList<>();
-        readUsers();
-        search_users=view.findViewById(R.id.search_users);
-        search_users.addTextChangedListener(new TextWatcher() {
+        myrecyclerView=view.findViewById(R.id.recycle_view);
+        myrecyclerView.setHasFixedSize(true);
+        myrecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        listUsers=new ArrayList<>();
+        readAllFriends();
+        looking_for_users=view.findViewById(R.id.search_users);
+        looking_for_users.addTextChangedListener(new TextWatcher() {
 
 
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                searchUsers(charSequence.toString());
+                searchUsersByString(charSequence.toString());
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                searchUsers(charSequence.toString());
+                searchUsersByString(charSequence.toString());
             }
 
             @Override
@@ -74,7 +70,7 @@ public class FriendsFragment extends Fragment {
         return view;
     }
 
-    private void searchUsers(String toString) {
+    private void searchUsersByString(String toString) {
         FirebaseUser fuser=FirebaseAuth.getInstance().getCurrentUser();
         FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
         Query query=FirebaseDatabase.getInstance().getReference().child("Friends").child(firebaseUser.getUid()).orderByChild("username")
@@ -83,15 +79,15 @@ public class FriendsFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                mUsers.clear();
+                listUsers.clear();
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     Friend user = snapshot1.getValue(Friend.class);
                     if (!user.getId().equals(fuser.getUid())) {
-                        mUsers.add(user);
+                        listUsers.add(user);
                     }
                 }
-                friendAdapter = new FriendAdapter(getContext(), mUsers, true);
-                recyclerView.setAdapter(friendAdapter);
+                myfriendAdapter = new FriendItemAdapter(getContext(), listUsers);
+                myrecyclerView.setAdapter(myfriendAdapter);
 
 
             }
@@ -104,24 +100,23 @@ public class FriendsFragment extends Fragment {
 
     }
 
-    private void readUsers() {
+    private void readAllFriends() {
         FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
 
-        DatabaseReference reference= FirebaseDatabase.getInstance().getReference().child("Friends").child(firebaseUser.getUid());
-        reference.addValueEventListener(new ValueEventListener() {
+        DatabaseReference databasereference= FirebaseDatabase.getInstance().getReference().child("Friends").child(firebaseUser.getUid());
+        databasereference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                mUsers.clear();
+                listUsers.clear();
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()){
-                    Friend user=snapshot.getValue(Friend.class);
-                    assert user!=null;
-                    assert firebaseUser !=null;
-                    if(!user.getId().equals(firebaseUser.getUid())){
-                        mUsers.add(user);
+                    Friend friend=snapshot.getValue(Friend.class);
+
+                    if(!friend.getId().equals(firebaseUser.getUid())){
+                        listUsers.add(friend);
                     }
                 }
-                friendAdapter=new FriendAdapter(getContext(),mUsers,true);
-                recyclerView.setAdapter(friendAdapter);
+                myfriendAdapter=new FriendItemAdapter(getContext(),listUsers);
+                myrecyclerView.setAdapter(myfriendAdapter);
             }
 
             @Override

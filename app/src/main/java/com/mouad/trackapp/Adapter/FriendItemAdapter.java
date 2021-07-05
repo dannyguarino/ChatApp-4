@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,47 +22,42 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mouad.trackapp.MessageActivity;
 import com.mouad.trackapp.Model.Friend;
-import com.mouad.trackapp.Model.User;
 import com.mouad.trackapp.R;
 
 import java.util.List;
 
-public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder> {
-    private Context mContext;
-    private List<Friend> mUsers;
-    private Boolean ischat;
-
-    public FriendAdapter(Context mContext,List<Friend> mUsers,Boolean ischat){
-        this.mContext=mContext;
-        this.mUsers=mUsers;
-        this.ischat=ischat;
+public class FriendItemAdapter extends RecyclerView.Adapter<FriendItemAdapter.ViewHolder> {
+    private Context context;
+    private List<Friend> listUsers;
 
 
-
+    public FriendItemAdapter(Context mContext, List<Friend> listUsers){
+        this.context=mContext;
+        this.listUsers=listUsers;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(mContext).inflate(R.layout.friend_item,parent,false);
-        return new FriendAdapter.ViewHolder(view);
+        View view= LayoutInflater.from(context).inflate(R.layout.friend_item,parent,false);
+        return new FriendItemAdapter.ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Friend user=mUsers.get(position);
+        Friend user=listUsers.get(position);
         holder.username.setText(user.getUsername());
         if(user.getImageURL().equals("default")){
             holder.profile_image.setImageResource(R.mipmap.ic_launcher);
         }
         else{
-            Glide.with(mContext).load(user.getImageURL()).into(holder.profile_image);
+            Glide.with(context).load(user.getImageURL()).into(holder.profile_image);
 
         }
 
         
 
-        if (ischat){
+
             FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
 
             DatabaseReference reference= FirebaseDatabase.getInstance().getReference().child("Users").child(user.getId()).child("status");
@@ -77,11 +71,11 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
                     s[0] =dataSnapshot.getValue(String.class);
                     System.out.println(s[0]);
                     if (s[0].equalsIgnoreCase("online")){
-                        holder.img_on.setVisibility(View.VISIBLE);
-                        holder.img_off.setVisibility(View.GONE);
+                        holder.imgon.setVisibility(View.VISIBLE);
+                        holder.imgoff.setVisibility(View.GONE);
                     }else{
-                        holder.img_off.setVisibility(View.VISIBLE);
-                        holder.img_on.setVisibility(View.GONE);
+                        holder.imgoff.setVisibility(View.VISIBLE);
+                        holder.imgon.setVisibility(View.GONE);
                     }
                 }
 
@@ -94,11 +88,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
 
 
 
-        }
-        else{
-            holder.img_off.setVisibility(View.GONE);
-            holder.img_on.setVisibility(View.GONE);
-        }
+
 
 
 
@@ -113,13 +103,13 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(mContext, MessageActivity.class);
+                Intent intent =new Intent(context, MessageActivity.class);
                 String useriid=user.getId();
                 intent.putExtra("id",useriid);
 
 
 
-                mContext.startActivity(intent);
+                context.startActivity(intent);
 
 
             }
@@ -128,7 +118,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return mUsers.size();
+        return listUsers.size();
     }
 
     public  class ViewHolder extends RecyclerView.ViewHolder {
@@ -139,15 +129,15 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
         private ImageButton  invited_friend;
         private ImageButton  add_friend;
         private TextView  info;
-        private ImageView img_on;
-        private ImageView img_off;
+        private ImageView imgon;
+        private ImageView imgoff;
 
         public ViewHolder(View itemView) {
             super(itemView);
             username=itemView.findViewById(R.id.username);
-            profile_image=itemView.findViewById(R.id.profile_image);
-            img_on=itemView.findViewById(R.id.img_on);
-            img_off=itemView.findViewById(R.id.img_off);
+            profile_image=itemView.findViewById(R.id.my_profile_image);
+            imgon=itemView.findViewById(R.id.my_img_on);
+            imgoff=itemView.findViewById(R.id.my_img_off);
             info=itemView.findViewById(R.id.info);
             add_friend=itemView.findViewById(R.id.add_friend);
             invited_friend=itemView.findViewById(R.id.invited_friend);

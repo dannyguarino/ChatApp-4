@@ -17,11 +17,12 @@ public class StartActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
+        //cheking if user is connected
         super.onStart();
         firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
         if(firebaseUser!=null){
-            Intent intent=new Intent(StartActivity.this,MainActivity.class);
-            startActivity(intent);
+            Intent intent1=new Intent(this,MainActivity.class);
+            startActivity(intent1);
             finish();
         }
     }
@@ -33,7 +34,7 @@ public class StartActivity extends AppCompatActivity {
 
         firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
         if(firebaseUser!=null){
-            Intent intent=new Intent(StartActivity.this,MainActivity.class);
+            Intent intent=new Intent(this,MainActivity.class);
             startActivity(intent);
             finish();
         }
@@ -45,14 +46,16 @@ public class StartActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(StartActivity.this,LoginActivity.class));
+                Intent intent2=new Intent(StartActivity.this,LoginActivity.class);
+                startActivity(intent2);
 
             }
         });
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(StartActivity.this,RegisterActivity.class));
+                Intent intent3=new Intent(StartActivity.this,RegisterActivity.class);
+                startActivity(intent3);
             }
         });
 

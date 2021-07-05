@@ -50,11 +50,26 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-
-        android:layout_marginBottom="104dp"
+        android:layout_marginBottom="140dp"
         android:background="@color/colorPrimaryVariant"
         android:gravity="center"
         android:text="@string/play_tic_tac_toe"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:backgroundTint="@color/colorPrimaryVariant" />
+    <Button
+        android:id="@+id/play_math_game"
+        style="@style/Widget.Support.CoordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="80dp"
+        android:background="@color/colorPrimaryVariant"
+        android:gravity="center"
+        android:text="@string/play_math_game"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
@@ -81,6 +96,6 @@
         android:layout_marginEnd="27dp"
         android:layout_marginBottom="9dp"
         android:layout_weight="1"
-        android:textColor="@color/black"
+        android:textColor="@android:color/background_dark"
         android:text="@string/skip" />
 </RelativeLayout>

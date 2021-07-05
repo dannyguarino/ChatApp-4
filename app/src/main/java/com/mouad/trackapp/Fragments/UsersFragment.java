@@ -22,7 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.mouad.trackapp.Adapter.UserAdapter;
+import com.mouad.trackapp.Adapter.UserItemAdapter;
 import com.mouad.trackapp.Model.User;
 import com.mouad.trackapp.R;
 
@@ -31,10 +31,10 @@ import java.util.List;
 
 
 public class UsersFragment extends Fragment {
-    private RecyclerView recyclerView;
-    private UserAdapter userAdapter;
-    private List<User> mUsers;
-    EditText search_users;
+    private RecyclerView myrecyclerView;
+    private UserItemAdapter myuserAdapter;
+    private List<User> listUsers;
+    EditText search_string_users;
 
 
     @Override
@@ -42,13 +42,13 @@ public class UsersFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_users, container, false);
-        recyclerView=view.findViewById(R.id.recycle_view);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mUsers=new ArrayList<>();
-        readUsers();
-        search_users=view.findViewById(R.id.search_users);
-        search_users.addTextChangedListener(new TextWatcher() {
+        myrecyclerView=view.findViewById(R.id.recycle_view);
+        myrecyclerView.setHasFixedSize(true);
+        myrecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        listUsers=new ArrayList<>();
+        readAllUsers();
+        search_string_users=view.findViewById(R.id.search_users);
+        search_string_users.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -56,7 +56,7 @@ public class UsersFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                    searchUsers(charSequence.toString());
+                searchUsersByString(charSequence.toString());
             }
 
             @Override
@@ -68,7 +68,7 @@ public class UsersFragment extends Fragment {
         return view;
     }
 
-    private void searchUsers(String toString) {
+    private void searchUsersByString(String toString) {
         FirebaseUser fuser=FirebaseAuth.getInstance().getCurrentUser();
         Query query=FirebaseDatabase.getInstance().getReference().child("Users").orderByChild("username")
                 .startAt(toString).endAt(toString+"\uf8ff");
@@ -76,15 +76,15 @@ public class UsersFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    mUsers.clear();
+                listUsers.clear();
                     for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                         User user = snapshot1.getValue(User.class);
                         if (!user.getId().equals(fuser.getUid())) {
-                            mUsers.add(user);
+                            listUsers.add(user);
                         }
                     }
-                    userAdapter = new UserAdapter(getContext(), mUsers, true);
-                    recyclerView.setAdapter(userAdapter);
+                myuserAdapter = new UserItemAdapter(getContext(), listUsers);
+                    myrecyclerView.setAdapter(myuserAdapter);
 
 
             }
@@ -97,24 +97,23 @@ public class UsersFragment extends Fragment {
 
     }
 
-    private void readUsers() {
+    private void readAllUsers() {
         FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
 
         DatabaseReference reference= FirebaseDatabase.getInstance().getReference().child("Users");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                mUsers.clear();
+                listUsers.clear();
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()){
                     User user=snapshot.getValue(User.class);
-                    assert user!=null;
-                    assert firebaseUser !=null;
+
                     if(!user.getId().equals(firebaseUser.getUid())){
-                        mUsers.add(user);
+                        listUsers.add(user);
                     }
                 }
-                userAdapter=new UserAdapter(getContext(),mUsers,true);
-                recyclerView.setAdapter(userAdapter);
+                myuserAdapter=new UserItemAdapter(getContext(),listUsers);
+                myrecyclerView.setAdapter(myuserAdapter);
             }
 
             @Override

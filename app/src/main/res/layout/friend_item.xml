@@ -5,7 +5,7 @@
     android:padding="10dp"
     android:layout_height="wrap_content">
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
+        android:id="@+id/my_profile_image"
         android:layout_height="50dp"
         android:layout_width="50dp"
         android:src="@mipmap/ic_launcher"
@@ -17,8 +17,8 @@
         android:text="username"
         android:id="@+id/username"
 
-        android:layout_toRightOf="@id/profile_image"
-        android:layout_toEndOf="@id/profile_image"
+        android:layout_toRightOf="@id/my_profile_image"
+        android:layout_toEndOf="@id/my_profile_image"
         android:layout_marginLeft="10dp"
         android:layout_centerVertical="true"
         android:textSize="18sp"
@@ -27,15 +27,15 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/img_on"
+        android:id="@+id/my_img_on"
         android:layout_height="15dp"
         android:layout_width="15dp"
         app:civ_border_color="@color/online"
         app:civ_border_width="10dp"
         android:layout_below="@id/username"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@id/profile_image"
-        android:layout_toEndOf="@id/profile_image"
+        android:layout_toRightOf="@id/my_profile_image"
+        android:layout_toEndOf="@id/my_profile_image"
         android:layout_marginLeft="-15dp"
         android:src="@mipmap/ic_launcher"
         android:visibility="gone"
@@ -43,15 +43,15 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/img_off"
+        android:id="@+id/my_img_off"
         android:layout_height="15dp"
         android:layout_width="15dp"
         app:civ_border_color="@color/offline"
         app:civ_border_width="10dp"
         android:layout_below="@id/username"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@id/profile_image"
-        android:layout_toEndOf="@id/profile_image"
+        android:layout_toRightOf="@id/my_profile_image"
+        android:layout_toEndOf="@id/my_profile_image"
         android:layout_marginLeft="-15dp"
         android:src="@mipmap/ic_launcher"
         />

@@ -40,10 +40,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
 
-    CircleImageView profile_image;
+    CircleImageView profileImage;
     TextView usermane;
-    FirebaseUser firebaseUser;
-    DatabaseReference reference;
+    FirebaseUser fUser;
+    DatabaseReference databasereference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,27 +54,27 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("connected\n\n\n\n\n\n\n");
         }
 
-        Toolbar toolbar=findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        Toolbar mytoolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(mytoolbar);
         getSupportActionBar().setTitle(R.string.Profile);
         getSupportActionBar().show();
 
 
-        profile_image= findViewById(R.id.profile_image);
+        profileImage= findViewById(R.id.profile_image);
         usermane=findViewById(R.id.username);
-        firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+        fUser= FirebaseAuth.getInstance().getCurrentUser();
 
-        reference= FirebaseDatabase.getInstance().getReference().child("Users").child(firebaseUser.getUid());
-        reference.addValueEventListener(new ValueEventListener() {
+        databasereference= FirebaseDatabase.getInstance().getReference().child("Users").child(fUser.getUid());
+        databasereference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user=dataSnapshot.getValue(User.class);
                 usermane.setText(user.getUsername());
                 if(user.getImageURL().equals("default")){
-                    profile_image.setImageResource(R.mipmap.ic_launcher);
+                    profileImage.setImageResource(R.mipmap.ic_launcher);
                 }
                 else{
-                    Glide.with(MainActivity.this).load(user.getImageURL()).into(profile_image);
+                    Glide.with(MainActivity.this).load(user.getImageURL()).into(profileImage);
                 }
             }
 
@@ -105,11 +105,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch(item.getItemId()){
+    public boolean onOptionsItemSelected(@NonNull MenuItem menuitem) {
+        switch(menuitem.getItemId()){
             case R.id.logout:
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(MainActivity.this,StartActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                Intent intent1=new Intent(this,SpashScreenActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent1);
                 finish();
                 return true;
         }
@@ -120,8 +121,8 @@ public class MainActivity extends AppCompatActivity {
         private ArrayList<Fragment> fragments;
         private  ArrayList<String> titles;
 
-         public ViewPagerAdapter(FragmentManager fm){
-            super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+         public ViewPagerAdapter(FragmentManager fragmentManager){
+            super(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
             this.fragments=new ArrayList<>();
             this.titles=new ArrayList<>();
 
@@ -149,23 +150,24 @@ public class MainActivity extends AppCompatActivity {
             return titles.get(position);
         }
     }
-    private void status(String status){
-        reference=FirebaseDatabase.getInstance().getReference().child("Users").child(firebaseUser.getUid());
-        HashMap<String,Object> hasMap=new HashMap<>();
-        hasMap.put("status",status);
-        reference.updateChildren(hasMap);
+    private void changestatus(String statusNewValue){
+
+        databasereference=FirebaseDatabase.getInstance().getReference().child("Users").child(fUser.getUid());
+        HashMap<String,Object> hashMapUpdated=new HashMap<>();
+        hashMapUpdated.put("status",statusNewValue);
+        databasereference.updateChildren(hashMapUpdated);
     }
 
     @Override
     protected void onResume(){
         super.onResume();
-        status("online");
+        changestatus("online");
     }
 
     @Override
     protected void onPause(){
         super.onPause();
-        status("offline");
+        changestatus("offline");
     }
 
     public boolean isNetworkAvailable() {

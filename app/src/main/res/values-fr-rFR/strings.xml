@@ -32,5 +32,12 @@
     <string name="change_password">change password</string>
     <string name="play_tic_tac_toe">Play X-O</string>
     <string name="no_connexion">You are not connected to any souces of internet, activate you connexion or have fun by playing a game</string>
+    <string name="play_math_game">play math game</string>
+    <string name="interval">MAX RANGE :</string>
+    <string name="choosed">Choosed :</string>
+    <string name="addition">Addition (+)</string>
+    <string name="multiplication_x">Multiplication (x)</string>
+    <string name="correct">Correct!</string>
+    <string name="wrong">wrong</string>
 
 </resources>

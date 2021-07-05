@@ -6,14 +6,16 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class TicTacToeActivity extends AppCompatActivity {
 
 
     ImageButton[] ib= new ImageButton[10];
-
-
+    TextView textview;
+    int win1=0;
+    int win2=0;
     int a;
     int[] c=new int[10];
 
@@ -22,13 +24,21 @@ public class TicTacToeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setContentView(R.layout.activity_tic_tac_toe);
+
+        textview=(TextView)findViewById(R.id.score1);
+        //if(textview==null) Toast.makeText(TicTacToeActivity.this,"null",Toast.LENGTH_LONG).show();
+        String score=ShowScore(win1,win2);
+        //Toast.makeText(TicTacToeActivity.this,score,Toast.LENGTH_LONG).show();
+        textview.setText(score);
+
         a = 0;
 
         for(int z=1;z<=9;z++) {
 
             c[z] = 0;
         }
-        setContentView(R.layout.activity_tic_tac_toe);
+
         ib[1] = (ImageButton) findViewById(R.id.imageButton1);
         ib[2] = (ImageButton) findViewById(R.id.imageButton2);
         ib[3] = (ImageButton) findViewById(R.id.imageButton3);
@@ -68,7 +78,11 @@ public class TicTacToeActivity extends AppCompatActivity {
     }
     public void checkWinner(int b1, int b2, int b3){
         if (b1==b2 && b2==b3 && b3==1){
+            //player 2 wins
             Toast.makeText(TicTacToeActivity.this,"Player "+1+" wins ",Toast.LENGTH_LONG).show();
+            win1++;
+            String score=ShowScore(win1,win2);
+            textview.setText(score);
             for(int z=1;z<=9;z++) {
 
                 c[z] = 0;
@@ -81,6 +95,9 @@ public class TicTacToeActivity extends AppCompatActivity {
         }
         else if (b1==b2 && b2==b3 && b3==-1){
             //player 2 wins
+            win2++;
+            String score=ShowScore(win1,win2);
+            textview.setText(score);
             Toast.makeText(TicTacToeActivity.this,"Player "+(2)+" wins ",Toast.LENGTH_LONG).show();
             for(int z=1;z<=9;z++) {
 
@@ -114,6 +131,10 @@ public class TicTacToeActivity extends AppCompatActivity {
         checkWinner(c[3],c[6],c[9]);
         checkWinner(c[1],c[5],c[9]);
         checkWinner(c[3],c[5],c[7]);
+    }
+
+    public String ShowScore(int a,int b){
+        return "score: "+a+" - "+b;
     }
 
 }
