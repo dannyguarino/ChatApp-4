@@ -31,8 +31,8 @@ public class FriendItemAdapter extends RecyclerView.Adapter<FriendItemAdapter.Vi
     private List<Friend> listUsers;
 
 
-    public FriendItemAdapter(Context mContext, List<Friend> listUsers){
-        this.context=mContext;
+    public FriendItemAdapter(Context context, List<Friend> listUsers){
+        this.context=context;
         this.listUsers=listUsers;
     }
 

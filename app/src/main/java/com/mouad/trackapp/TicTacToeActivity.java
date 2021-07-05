@@ -76,7 +76,7 @@ public class TicTacToeActivity extends AppCompatActivity {
             });}
 
     }
-    public void checkWinner(int b1, int b2, int b3){
+    public void checktheWinner(int b1, int b2, int b3){
         if (b1==b2 && b2==b3 && b3==1){
             //player 2 wins
             Toast.makeText(TicTacToeActivity.this,"Player "+1+" wins ",Toast.LENGTH_LONG).show();
@@ -123,14 +123,14 @@ public class TicTacToeActivity extends AppCompatActivity {
 
     }
     public void checkGame(){
-        checkWinner(c[1],c[2],c[3]);
-        checkWinner(c[4],c[5],c[6]);
-        checkWinner(c[7],c[8],c[9]);
-        checkWinner(c[1],c[4],c[7]);
-        checkWinner(c[2],c[5],c[8]);
-        checkWinner(c[3],c[6],c[9]);
-        checkWinner(c[1],c[5],c[9]);
-        checkWinner(c[3],c[5],c[7]);
+        checktheWinner(c[1],c[2],c[3]);
+        checktheWinner(c[4],c[5],c[6]);
+        checktheWinner(c[7],c[8],c[9]);
+        checktheWinner(c[1],c[4],c[7]);
+        checktheWinner(c[2],c[5],c[8]);
+        checktheWinner(c[3],c[6],c[9]);
+        checktheWinner(c[1],c[5],c[9]);
+        checktheWinner(c[3],c[5],c[7]);
     }
 
     public String ShowScore(int a,int b){

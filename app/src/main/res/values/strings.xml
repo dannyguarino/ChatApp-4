@@ -34,20 +34,20 @@
     <string name="Friends">Friends</string>
     <string name="users">Users</string>
     <string name="change_password">change password</string>
-    <string name="no_connexion">You are not connected to any souces of internet, activate you connexion or have fun by playing a game</string>
+    <string name="no_connexion">You are not connected to any sources of internet, activate you connexion or have fun by playing a game</string>
     <string name="play_tic_tac_toe">Play X-O</string>
     <string name="play_math_game">play math game</string>
     <string name="interval">MAX RANGE :</string>
     <string name="choosed">Choosed :</string>
     <string name="addition">Addition (+)</string>
-    <string name="extraction">Extraction (-)</string>
+    <string name="extraction" translatable="false">Extraction (-)</string>
     <string name="multiplication_x">Multiplication (x)</string>
-    <string name="play2">Play!</string>
-    <string name="time_limit">Time Limit</string>
-    <string name="play_again">Play Again</string>
+    <string name="play2" translatable="false">Play!</string>
+    <string name="time_limit" translatable="false">Time Limit</string>
+    <string name="play_again" translatable="false">Play Again</string>
     <string name="correct">Correct!</string>
     <string name="wrong">wrong</string>
-    <string name="inprogress">Upload in progress</string>
-    <string name="notsetected">No image selected</string>
-    <string name="failed">Failed!</string>
+    <string name="inprogress" translatable="false">Upload in progress</string>
+    <string name="notsetected" translatable="false">No image selected</string>
+    <string name="failed" translatable="false">Failed!</string>
 </resources>

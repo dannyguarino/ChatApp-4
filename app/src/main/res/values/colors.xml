@@ -6,7 +6,6 @@
     <color name="colorPrimaryVariant">#D83A56</color>
     <color name="online">#05df29</color>
     <color name="offline">#bfbfbf</color>
-    <color name="online">#05df29</color>
-    <color name="offline">#bfbfbf</color>
+
 
 </resources>

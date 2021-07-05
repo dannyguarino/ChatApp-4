@@ -116,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return false;
     }
+
     public static class ViewPagerAdapter extends FragmentPagerAdapter{
 
         private ArrayList<Fragment> fragments;
@@ -150,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
             return titles.get(position);
         }
     }
+
     private void changestatus(String statusNewValue){
 
         databasereference=FirebaseDatabase.getInstance().getReference().child("Users").child(fUser.getUid());
