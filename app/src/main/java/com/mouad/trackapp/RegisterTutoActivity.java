@@ -13,14 +13,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class RegisterTutoActivity extends AppCompatActivity {
-    FirebaseUser firebaseUser;
+
     ImageButton imageButton;
     Button register;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_tuto);
-        firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+
 
 
 
@@ -50,12 +50,6 @@ public class RegisterTutoActivity extends AppCompatActivity {
             }
         });
 
-        if(firebaseUser!=null){
-            Intent intent=new Intent(RegisterTutoActivity.this,MainActivity.class);
-            countDownTimer.cancel();
-            startActivity(intent);
-            finish();
-        }
 
         imageButton=findViewById(R.id.arrow);
         imageButton.setOnClickListener(new View.OnClickListener() {

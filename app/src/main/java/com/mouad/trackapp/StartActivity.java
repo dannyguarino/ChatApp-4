@@ -13,31 +13,15 @@ import com.google.firebase.auth.FirebaseUser;
 public class StartActivity extends AppCompatActivity {
 
     Button login,register;
-    FirebaseUser firebaseUser;
 
-    @Override
-    protected void onStart() {
-        //cheking if user is connected
-        super.onStart();
-        firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        if(firebaseUser!=null){
-            Intent intent1=new Intent(this,MainActivity.class);
-            startActivity(intent1);
-            finish();
-        }
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_main);
 
-        firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        if(firebaseUser!=null){
-            Intent intent=new Intent(this,MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
+        
 
 
 

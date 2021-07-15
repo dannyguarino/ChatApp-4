@@ -12,20 +12,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MessagingActivity extends AppCompatActivity {
-    FirebaseUser firebaseUser;
+
     ImageButton imageButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messaging);
-
-        firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        if(firebaseUser!=null){
-            Intent intent=new Intent(MessagingActivity.this,MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
-
 
         CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
 
